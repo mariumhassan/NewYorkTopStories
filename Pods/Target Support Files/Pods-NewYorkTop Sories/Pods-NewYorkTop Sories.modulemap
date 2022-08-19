@@ -1,0 +1,6 @@
+framework module Pods_NewYorkTop_Sories {
+  umbrella header "Pods-NewYorkTop Sories-umbrella.h"
+
+  export *
+  module * { export * }
+}
