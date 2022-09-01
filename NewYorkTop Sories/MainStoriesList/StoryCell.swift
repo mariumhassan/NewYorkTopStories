@@ -8,7 +8,7 @@ import Foundation
 import UIKit
 import SDWebImage
 
-final class StoryCell: UITableViewCell{
+final class StoryCell: UITableViewCell {
     
     //MARK: - Outlets
     @IBOutlet weak var thumbNailimage: UIImageView!
@@ -23,13 +23,12 @@ final class StoryCell: UITableViewCell{
         }
     }
     
-    override func layoutSubviews() {
-        setupShadow()
+    override func awakeFromNib() {
+        self.setupShadow()
     }
     
     public func setupShadow() {
         self.thumbNailimage.layer.cornerRadius = 0.25
-        self.thumbNailimage.clipsToBounds = true
         self.layer.cornerRadius = 0.38
         self.layer.borderWidth = 0
         self.layer.shadowColor = UIColor.black.cgColor

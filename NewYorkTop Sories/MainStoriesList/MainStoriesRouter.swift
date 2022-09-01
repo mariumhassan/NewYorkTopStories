@@ -15,25 +15,23 @@ protocol MainStoriesRouterProtocol {
 
 final class MainStoriesRouter: MainStoriesRouterProtocol {
     
+    private let stoayBoardFactory = StoryBoardsFactory(storyboardName: "Main")
     //MARK: - MainStoriesRouterProtocol
     func navigateToDetailScreen(story: MainStoryListModel, navigation: UINavigationController?) {
         let args = StoryDetailModuleArgs(url: story.url, title: story.title, author: story.author, description: story.abstract, mediaUrl: story.media?[2].url)
         let presenter = StoryDetailPresenter(moduleArgs: args)
-        let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        let vc = storyBoard.instantiateViewController(identifier: "StoryDetailViewController") as? StoryDetailViewController
+        let vc = stoayBoardFactory.intiateViewController(identifier: "StoryDetailViewController") as? StoryDetailViewController
         presenter.view = vc
         vc?.presenter = presenter
         if let viewController = vc, let nav = navigation {
             nav.pushViewController(viewController, animated: true)
         }
-        
     }
     
     func navigateToInitialVC() -> UIViewController? {
         let interactor = MainStoriesInteractor(baseService: BaseService())
         let presenter = MainStoriesPresenter(router: self, interactor: interactor)
-        let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        let vc = storyBoard.instantiateViewController(identifier: "MainStoriesViewController") as? MainStoriesViewController
+        let vc = stoayBoardFactory.intiateViewController(identifier: "MainStoriesViewController") as? MainStoriesViewController
         presenter.view = vc
         vc?.presenter = presenter
         

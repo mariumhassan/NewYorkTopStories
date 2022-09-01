@@ -59,9 +59,10 @@ final class MainStoriesPresenter: MainStoriesPresenterProtocol {
             switch result {
             case .success(let response):
                 self?.storiesModel  = response
+                self?.view?.hideErrorView()
                 self?.view?.reloadTableView()
             case .failure(let error):
-                print(error)
+                self?.view?.showErrorView(errorMsg: error.description)
             case .none:
                 print("")
             }

@@ -12,11 +12,18 @@ protocol MainStoriesViewProtocol: AnyObject {
     var navigation: UINavigationController? { get }
     /// shows a loading indicator while content is loading
     func animateLoadingView(loading: Bool)
+    /// shows error view when server fails to fetch anydata
+    /// - ErrorMsg is messge string to show to user
+    func showErrorView(errorMsg: String)
+    /// hide error view when response is success
+    func hideErrorView()
 }
 
 class MainStoriesViewController: UIViewController, MainStoriesViewProtocol {
 
     //MARK: - Outlets
+    @IBOutlet weak var errorView: UIView!
+    @IBOutlet weak var errorDescription: UILabel!
     @IBOutlet weak var mainTableView: UITableView!
     @IBOutlet weak var loadingView: UIActivityIndicatorView!
     
@@ -42,12 +49,22 @@ class MainStoriesViewController: UIViewController, MainStoriesViewProtocol {
         return self.navigationController
     }
 
-    
     func reloadTableView() {
         DispatchQueue.main.async {
             self.mainTableView.reloadData()
         }
-        
+    }
+    
+    func showErrorView(errorMsg: String) {
+        self.reloadTableView()
+        self.mainTableView.isHidden = true
+        self.errorDescription.text = errorMsg
+        self.errorView.isHidden = false
+    }
+    
+    func hideErrorView() {
+        self.errorView.isHidden = true
+        self.mainTableView.isHidden = false
     }
     
     func animateLoadingView(loading: Bool) {

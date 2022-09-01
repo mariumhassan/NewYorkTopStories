@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		023B923828B7780600D95D07 /* StoryBoardsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023B923728B7780600D95D07 /* StoryBoardsFactory.swift */; };
 		0284644528AF786D00F45772 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0284644428AF786D00F45772 /* AppDelegate.swift */; };
 		0284644728AF786D00F45772 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0284644628AF786D00F45772 /* SceneDelegate.swift */; };
 		0284644C28AF786D00F45772 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0284644A28AF786D00F45772 /* Main.storyboard */; };
@@ -53,6 +54,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		023B923728B7780600D95D07 /* StoryBoardsFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryBoardsFactory.swift; sourceTree = "<group>"; };
 		0284644128AF786D00F45772 /* NewYorkTop Sories.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NewYorkTop Sories.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0284644428AF786D00F45772 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0284644628AF786D00F45772 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 		0284647928AF78B800F45772 /* MainStoriesList */ = {
 			isa = PBXGroup;
 			children = (
+				023B923728B7780600D95D07 /* StoryBoardsFactory.swift */,
 				0284647A28AF78B800F45772 /* MainStoriesInteractor.swift */,
 				0284647B28AF78B800F45772 /* MainStoriesRouter.swift */,
 				0284647C28AF78B800F45772 /* EntityModel.swift */,
@@ -220,7 +223,6 @@
 				1F41704EF913B5A61B3A4230 /* Pods-NewYorkTop SoriesTests.debug.xcconfig */,
 				91A7C8D7B885D09937DC0BA9 /* Pods-NewYorkTop SoriesTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -478,6 +480,7 @@
 				0284648228AF78B800F45772 /* StoryDetailPresenter.swift in Sources */,
 				0284648928AF78B800F45772 /* MainStoriesPresenter.swift in Sources */,
 				0284648628AF78B800F45772 /* EntityModel.swift in Sources */,
+				023B923828B7780600D95D07 /* StoryBoardsFactory.swift in Sources */,
 				0284648328AF78B800F45772 /* BaseService.swift in Sources */,
 				0284648728AF78B800F45772 /* MainStoriesViewController.swift in Sources */,
 				0284648128AF78B800F45772 /* StoryDetailViewController.swift in Sources */,

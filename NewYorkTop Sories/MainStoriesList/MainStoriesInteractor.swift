@@ -8,7 +8,7 @@ import UIKit
 
 protocol MainStoriesInteractorProtocol {
     /// fetch Top Stories from server
-    func fetchTopStories(completion: @escaping (Result<[Int: [MainStoryListModel]],Error>?) -> Void)
+    func fetchTopStories(completion: @escaping (Result<[Int: [MainStoryListModel]],ServerError>?) -> Void)
 }
 
 final class MainStoriesInteractor:  MainStoriesInteractorProtocol{
@@ -28,7 +28,7 @@ final class MainStoriesInteractor:  MainStoriesInteractorProtocol{
     
     //MARK: - MainStoriesInteractorProtocol
     
-    func fetchTopStories(completion: @escaping (Result<[Int: [MainStoryListModel]],Error>?) -> Void){
+    func fetchTopStories(completion: @escaping (Result<[Int: [MainStoryListModel]],ServerError>?) -> Void){
         let actionCount = (TopStories.allCases.count - 1)
         var storiesList : [Int: [MainStoryListModel]] = [actionCount: [MainStoryListModel]()]
         for story in 0...actionCount {
@@ -39,8 +39,8 @@ final class MainStoriesInteractor:  MainStoriesInteractorProtocol{
                     guard let response = response.data else { return }
                     storiesList[story] = self.processFetchedData(response: response)
                     completion(.success(storiesList))
-                case .failure(let error):
-                    completion(.failure(error))
+                case .failure(_):
+                    completion(.failure(ServerError.requestTimeOut))
                 case .none:
                     print("")
                 }
@@ -57,6 +57,19 @@ enum TopStories: String, CaseIterable {
     case viewed = "viewed/1.json?"
 }
 
+public enum ServerError: Error {
+    case requestTimeOut
+    
+    var description: String {
+        getDescription()
+    }
+    private func getDescription() -> String {
+        switch self {
+        case .requestTimeOut:
+            return "Your request timed Out, please check your internet connection."
+        }
+    }
+}
 
 
 

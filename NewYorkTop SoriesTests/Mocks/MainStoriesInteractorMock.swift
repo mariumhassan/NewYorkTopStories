@@ -16,7 +16,7 @@ final class MainStoriesInteractorMock:  MainStoriesInteractorProtocol{
     }
     
     //MARK: - MainStoriesInteractorProtocol
-    func fetchTopStories(completion: @escaping (Result<[Int: [MainStoryListModel]],Error>?) -> Void){
+    func fetchTopStories(completion: @escaping (Result<[Int: [MainStoryListModel]],ServerError>?) -> Void){
         self.didCallFetchStories = true
             self.baseService.execute(action: "", completionHandler: {
                 (result: Result<BaseResponse<EntityModel>,Error>?) -> Void in
